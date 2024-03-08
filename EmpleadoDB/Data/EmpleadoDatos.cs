@@ -38,7 +38,7 @@ namespace EmpleadoDB.Data
             return oLista;
         }
 
-        public bool Guardar(EmpleadoModel oEmpleado) {
+        public bool Insertar(EmpleadoModel oEmpleado) {
             bool resultado;
 
             try{ 
