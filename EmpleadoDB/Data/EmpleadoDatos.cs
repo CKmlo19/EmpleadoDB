@@ -18,6 +18,7 @@ namespace EmpleadoDB.Data
                 conexion.Open();
                 // el procedure de listar
                 SqlCommand cmd = new SqlCommand("dbo.ListarEmpleado", conexion);
+                cmd.Parameters.AddWithValue("OutResultCode", 0); // se le coloca un 0 en el outresultcode
                 cmd.CommandType = CommandType.StoredProcedure;
 
                 using(var dr = cmd.ExecuteReader())
@@ -30,7 +31,7 @@ namespace EmpleadoDB.Data
                             // tecnicamente hace un select, es por eso que se lee cada registro uno a uno que ya esta ordenado
                             Id = (int)Convert.ToInt64(dr["Id"]),
                             Nombre = dr["Nombre"].ToString(),
-                            Salario = Convert.ToInt64(dr["Salario"])
+                            Salario = Convert.ToDecimal(dr["Salario"])
                         });
                     }
                 }
@@ -54,6 +55,7 @@ namespace EmpleadoDB.Data
                 SqlCommand cmd = new SqlCommand("dbo.InsertarEmpleado", conexion);
                 cmd.Parameters.AddWithValue("inNombre",oEmpleado.Nombre);
                 cmd.Parameters.AddWithValue("inSalario",oEmpleado.Salario);
+                cmd.Parameters.AddWithValue("OutResultCode", 0); // en un inicio se coloca en 0
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.ExecuteNonQuery(); // sirve para que ejecute el store procedure como tal, que es la que inserta
    

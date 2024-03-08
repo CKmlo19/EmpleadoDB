@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc.RazorPages.Infrastructure;
+using Microsoft.AspNetCore.Routing.Constraints;
 using System.Data.SqlTypes;
 
 namespace EmpleadoDB.Models
@@ -7,6 +8,6 @@ namespace EmpleadoDB.Models
     {
         public int Id { get; set; }
         public string? Nombre { get; set; }
-        public SqlMoney Salario { get; set; }
+        public decimal Salario { get; set; }
     }
 }
