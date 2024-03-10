@@ -12,9 +12,21 @@ html {
   box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
 }
 
+h1 {
+    text-align:center;
+
+}
+.card-header {
+
+    justify-content:center;
+    text-align:center;
+    font-size: 30px;
+    font: bold;
+}
+
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
 
 body {
