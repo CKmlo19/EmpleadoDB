@@ -53,7 +53,7 @@ namespace EmpleadoDB.Data
                 conexion.Open();
                 // el procedure de listar
                 SqlCommand cmd = new SqlCommand("dbo.InsertarEmpleado", conexion);
-                cmd.Parameters.AddWithValue("inNombre",oEmpleado.Nombre);
+                cmd.Parameters.AddWithValue("inNombre",oEmpleado.Nombre.Trim()); // se le hace un trim a la hora de insertar
                 cmd.Parameters.AddWithValue("inSalario",oEmpleado.Salario);
                 cmd.Parameters.AddWithValue("OutResultCode", 0); // en un inicio se coloca en 0
                 cmd.CommandType = CommandType.StoredProcedure;
