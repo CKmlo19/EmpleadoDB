@@ -1,0 +1,17 @@
+﻿
+
+@model EmpleadoModel  // se utiliza la clase en el formulario
+@{
+    ViewData["Title"] = "Fracaso";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="card">
+    <div class="card-body">
+            <dialog open id="modal">
+                <h2 class="Inserccion">Error 50005: El nombre ya se encuentra registrado</h2>
+                <a asp-action="Insertar" asp-controller="Empleado" class="btn btn-warning">OK</a>
+            </dialog>
+    </div>
+</div>

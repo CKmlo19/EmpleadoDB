@@ -40,38 +40,32 @@ namespace EmpleadoDB.Data
             return oLista;
         }
 
-        public bool Insertar(EmpleadoModel oEmpleado) {
-            bool resultado;
+        public int Insertar(EmpleadoModel oEmpleado) {
+            int resultado;
 
             try{ 
 
 
                 var cn = new Conexion();
 
-            // abre la conexion
-            using (var conexion = new SqlConnection(cn.getCadenaSQL()))
-            {
-                conexion.Open();
-                // el procedure de listar
-                SqlCommand cmd = new SqlCommand("dbo.InsertarEmpleado", conexion);
-                cmd.Parameters.AddWithValue("inNombre",oEmpleado.Nombre.Trim()); // se le hace un trim a la hora de insertar
-                cmd.Parameters.AddWithValue("inSalario",oEmpleado.Salario);
-                cmd.Parameters.AddWithValue("OutResultCode", 0); // en un inicio se coloca en 0
-                cmd.CommandType = CommandType.StoredProcedure;
-                int result = Convert.ToInt32(cmd.ExecuteScalar()); // Lo ejecuta y retorna un valor
-                    if (result != 0) {
-                        
-
-
-                    }
+                // abre la conexion
+                using (var conexion = new SqlConnection(cn.getCadenaSQL()))
+                {
+                    conexion.Open();
+                    // el procedure de listar
+                    SqlCommand cmd = new SqlCommand("dbo.InsertarEmpleado", conexion);
+                    cmd.Parameters.AddWithValue("inNombre", oEmpleado.Nombre.Trim()); // se le hace un trim a la hora de insertar
+                    cmd.Parameters.AddWithValue("inSalario", oEmpleado.Salario);
+                    cmd.Parameters.AddWithValue("OutResultCode", 0); // en un inicio se coloca en 0
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    resultado = Convert.ToInt32(cmd.ExecuteScalar()); // Lo ejecuta y retorna un valor
+                    Console.WriteLine(resultado);
+                    // Registrar el script en la página para que se ejecute en el lado del cliente
                 }
-                resultado = true;
-                // Registrar el script en la página para que se ejecute en el lado del cliente
-
             }
             catch(Exception e) {
                 string error = e.Message;
-                resultado = false; 
+                resultado = 50006; 
                     
             }
             return resultado;

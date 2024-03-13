@@ -33,14 +33,17 @@ namespace EmpleadoDB.Controllers
 
             var resultado = _EmpleadoDatos.Insertar(oEmpleado);
 
-            if (resultado)
+            if (resultado == 0)
             {
-                return RedirectToAction("Listar");
+                return View("Exito");
 
             }
-            else{
-                return View();
-             }
+            else
+            {
+                //return RedirectToAction("Fracaso");
+                return View("Fracaso");
+
+            }
         }
     }
 }
