@@ -36,13 +36,11 @@ namespace EmpleadoDB.Controllers
             if (resultado == 0)
             {
                 return View("Exito");
-
             }
             else
             {
                 //return RedirectToAction("Fracaso");
                 return View("Fracaso");
-
             }
         }
     }

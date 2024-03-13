@@ -1,4 +1,4 @@
-﻿@model List<EmpleadoModel> // se utiliza la clase en el formulario
+﻿@model EmpleadoModel // se utiliza la clase en el formulario
 @{
     ViewData["Title"] = "Exito";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -6,9 +6,9 @@
 
 <div class="card">
     <div class="card-body">
-        <dialog id="modal">
-            <h2 class="Inserccion">Inserccion Exitosa</h2>
-            <a asp-action="Listar" asp-controller="Empleado" class="btn btn-success">OK</a>
-        </dialog>
+         <dialog open id="modal">
+             <h2 class="Inserccion">Inserccion Exitosa</h2>
+             <a asp-action="Listar" asp-controller="Empleado" class="btn btn-success">OK</a>
+         </dialog>
     </div>
 </div>
