@@ -38,7 +38,7 @@ namespace EmpleadoDB.Controllers
                 return RedirectToAction("Listar");
 
             }
-            else{ 
+            else{
                 return View();
              }
         }

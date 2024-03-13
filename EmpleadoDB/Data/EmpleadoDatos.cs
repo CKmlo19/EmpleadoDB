@@ -1,6 +1,7 @@
 ﻿using EmpleadoDB.Models;
 using System.Data.SqlClient;
 using System.Data;
+using Microsoft.CodeAnalysis.Scripting;
 
 namespace EmpleadoDB.Data
 {
@@ -21,7 +22,7 @@ namespace EmpleadoDB.Data
                 cmd.Parameters.AddWithValue("OutResultCode", 0); // se le coloca un 0 en el outresultcode
                 cmd.CommandType = CommandType.StoredProcedure;
 
-                using(var dr = cmd.ExecuteReader())
+                using(var dr = cmd.ExecuteReader()) // este se utiliza cuando se retorna una gran cantidad de datos, por ejemplo la tabla completa
                 {
                     // hace una lectura del procedimiento almacenado
                     while (dr.Read())
@@ -57,12 +58,18 @@ namespace EmpleadoDB.Data
                 cmd.Parameters.AddWithValue("inSalario",oEmpleado.Salario);
                 cmd.Parameters.AddWithValue("OutResultCode", 0); // en un inicio se coloca en 0
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.ExecuteNonQuery(); // sirve para que ejecute el store procedure como tal, que es la que inserta
-   
-            }
+                int result = Convert.ToInt32(cmd.ExecuteScalar()); // Lo ejecuta y retorna un valor
+                    if (result != 0) {
+                        
+
+
+                    }
+                }
                 resultado = true;
-            
-            }catch(Exception e) {
+                // Registrar el script en la página para que se ejecute en el lado del cliente
+
+            }
+            catch(Exception e) {
                 string error = e.Message;
                 resultado = false; 
                     

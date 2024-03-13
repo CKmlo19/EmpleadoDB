@@ -23,8 +23,13 @@
                 <span asp-validation-for="Salario" class="text-danger"></span>
 
             </div>
-            <button type="submit" class="btn btn-primary">Insertar</button>
+            <button type="button" class="btn btn-primary btn-abrir-modal">Insertar</button>
+            <dialog id="modal">
+                <h2 class="Inserccion">Inserccion Exitosa</h2>
+                <a asp-action="Listar" asp-controller="Empleado" class="btn btn-success">OK</a>
+            </dialog>
             <a asp-action="Listar" asp-controller="Empleado" class="btn btn-warning">Regresar</a>
         </form>
     </div>
 </div>
+
